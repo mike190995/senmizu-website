@@ -8,14 +8,14 @@ interface PortfolioModalProps {
 }
 
 const PortfolioModal: React.FC<PortfolioModalProps> = ({ item, onClose }) => {
-  if (!item) return null;
-
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     };
   }, []);
+
+  if (!item) return null;
 
   const renderMedia = () => {
     if (Array.isArray(item.mediaLink)) {

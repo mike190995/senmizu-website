@@ -1,6 +1,31 @@
 import React from 'react';
 import { BlogPost } from '../types/blog';
-import AudioPlayer from './AudioPlayer';
+import { useAudio } from '../context/AudioContext';
+import { Play, Pause } from 'lucide-react';
+
+const PlayButton: React.FC<{ audioSrc: string; title: string }> = ({ audioSrc, title }) => {
+  const { playTrack, currentTrack, isPlaying, togglePlay } = useAudio();
+  const isCurrentTrack = currentTrack?.src === encodeURI(audioSrc);
+  const isMsgPlaying = isCurrentTrack && isPlaying;
+
+  const handlePlay = () => {
+    if (isCurrentTrack) {
+      togglePlay();
+    } else {
+      playTrack({ src: encodeURI(audioSrc), title });
+    }
+  };
+
+  return (
+    <button
+      onClick={handlePlay}
+      className="flex items-center gap-2 bg-brand-primary text-white px-4 py-2 rounded-full hover:bg-brand-primary/90 transition-colors"
+    >
+      {isMsgPlaying ? <Pause size={18} /> : <Play size={18} />}
+      <span className="font-medium">{isMsgPlaying ? 'Pause' : 'Play Episode'}</span>
+    </button>
+  );
+};
 
 interface BlogPostLayoutProps {
   post: BlogPost;
@@ -21,9 +46,9 @@ const BlogPostLayout: React.FC<BlogPostLayoutProps> = ({ post }) => {
       <main className="max-w-4xl mx-auto p-4 sm:p-8">
         <article className="bg-white rounded-lg shadow-xl overflow-hidden">
           <img
-              src={bannerImage}
-              alt={`Banner for ${title}`}
-              className="w-full h-auto object-cover"
+            src={bannerImage}
+            alt={`Banner for ${title}`}
+            className="w-full h-auto object-cover"
           />
 
           <div className="p-6 sm:p-10">
@@ -41,9 +66,15 @@ const BlogPostLayout: React.FC<BlogPostLayoutProps> = ({ post }) => {
 
             {/* Render the actual AudioPlayer if audioSrc is available */}
             {audioSrc && (
-              <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 mb-8">
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Listen to the Episode</h3>
-                <AudioPlayer src={audioSrc} title={title} />
+              <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 mb-8 flex items-center justify-between">
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-1">Listen to the Episode</h3>
+                  <p className="text-sm text-gray-500">Audio version of this article</p>
+                </div>
+                <PlayButton
+                  audioSrc={audioSrc}
+                  title={title}
+                />
               </div>
             )}
 

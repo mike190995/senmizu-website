@@ -2,13 +2,20 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainContent from './MainContent';
 
+import { AudioProvider } from './context/AudioContext';
+import ErrorBoundary from './components/ErrorBoundary';
+
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/*" element={<MainContent />} />
-      </Routes>
-    </Router>
+    <AudioProvider>
+      <ErrorBoundary>
+        <Router>
+          <Routes>
+            <Route path="/*" element={<MainContent />} />
+          </Routes>
+        </Router>
+      </ErrorBoundary>
+    </AudioProvider>
   );
 }
 

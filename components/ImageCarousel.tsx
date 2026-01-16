@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 
 interface ImageCarouselProps {
   images: string[];
+  autoplay?: boolean;
+  autoplaySpeed?: number;
 }
 
-const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
+const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, autoplay = false, autoplaySpeed = 3000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToPrevious = () => {
@@ -13,11 +15,21 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
     setCurrentIndex(newIndex);
   };
 
-  const goToNext = () => {
+  const goToNext = React.useCallback(() => {
     const isLastImage = currentIndex === images.length - 1;
     const newIndex = isLastImage ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
-  };
+  }, [currentIndex, images.length]);
+
+  React.useEffect(() => {
+    if (!autoplay) return;
+
+    const interval = setInterval(() => {
+      goToNext();
+    }, autoplaySpeed);
+
+    return () => clearInterval(interval);
+  }, [autoplay, autoplaySpeed, goToNext]);
 
   return (
     <div className="relative w-full">

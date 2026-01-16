@@ -35,7 +35,7 @@ const PortfolioPage: React.FC = () => {
           onItemClick={handleItemClick}
         />
       </div>
-      {mounted && createPortal(
+      {mounted && selectedItem && createPortal(
         <PortfolioModal item={selectedItem} onClose={handleCloseModal} />,
         document.body
       )}

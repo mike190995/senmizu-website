@@ -9,7 +9,8 @@ export interface PortfolioItemProps {
 }
 
 const PortfolioItem: React.FC<PortfolioItemProps> = ({ title, subtitle, body, tags, mediaLink }) => {
-  const displayMedia = Array.isArray(mediaLink) ? mediaLink[0] : mediaLink;
+  const mediaItems = Array.isArray(mediaLink) ? mediaLink : [mediaLink];
+  const displayMedia = mediaItems[0] || '';
 
   return (
     <div className="portfolio-item mb-12">
@@ -24,12 +25,21 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ title, subtitle, body, ta
         ))}
       </div>
       {displayMedia.endsWith('.mp4') ? (
-        <video controls className="w-full rounded-lg shadow-lg">
+        <video
+          controls
+          preload="metadata"
+          className="w-full rounded-lg shadow-lg aspect-video bg-black/40"
+        >
           <source src={displayMedia} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       ) : (
-        <img src={displayMedia} alt={title} className="w-full rounded-lg shadow-lg" />
+        <img
+          src={displayMedia}
+          alt={title}
+          loading="lazy"
+          className="w-full rounded-lg shadow-lg object-cover"
+        />
       )}
     </div>
   );

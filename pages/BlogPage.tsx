@@ -1,14 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { blogPosts } from '../data/mockBlogPosts';
 import BlogPost from '../components/BlogPost';
-import { BlogPost as BlogPostType } from '../types/blog';
 
 const BlogPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
-  const [hasPlayedPreview, setHasPlayedPreview] = useState(false);
-  const featuredPostRef = useRef<HTMLDivElement>(null);
 
   // Sort posts by date descending to ensure the featured post is the most recent
   const sortedPosts = [...blogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -34,36 +31,6 @@ const BlogPage: React.FC = () => {
     return titleMatch || contentMatch || tagMatch;
   });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // Find the audio element within the featured post component
-        const audioEl = featuredPostRef.current?.querySelector('audio');
-
-        if (entry.isIntersecting && !hasPlayedPreview && featuredPost?.audioSrc && audioEl) {
-          setHasPlayedPreview(true);
-
-          // Now control the audio element that's part of BlogPost
-          audioEl.volume = 0.5;
-          audioEl.play().catch((e) => console.log('Audio autoplay blocked', e));
-
-          setTimeout(() => {
-            // Only pause if the user hasn't already interacted with the controls
-            if (audioEl && !audioEl.paused) {
-              audioEl.pause();
-            }
-          }, 10000);
-        }
-      },
-      { threshold: 1.0 }
-    );
-
-    if (featuredPostRef.current) {
-      observer.observe(featuredPostRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [hasPlayedPreview, featuredPost]);
 
   return (
     <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 animate-fade-in">
@@ -108,8 +75,7 @@ const BlogPage: React.FC = () => {
       {/* Featured Post Section */}
       {featuredPost && (
         <section className="mb-16">
-          <h2 className="text-4xl font-bold text-white mb-8 text-center">Featured Post</h2>
-          <div ref={featuredPostRef} className="flex justify-center lg:w-4/5 lg:mx-auto">
+          <div className="flex justify-center lg:w-4/5 lg:mx-auto">
             <BlogPost
               key={featuredPost.id}
               title={featuredPost.title}
@@ -120,6 +86,7 @@ const BlogPage: React.FC = () => {
               readTime={featuredPost.readTime}
               tags={featuredPost.tags}
               onClick={() => handlePostClick(featuredPost.id)}
+              isFeatured={false}
             />
           </div>
         </section>

@@ -13,7 +13,9 @@ import ContactPage from './pages/ContactPage';
 import BlogPage from './pages/BlogPage';
 import BlogPostPage from './pages/BlogPostPage';
 import ScrollToTopButton from './components/ScrollToTopButton';
+
 import useCanonicalTag from './hooks/useCanonicalTag';
+import AudioPlayer from './components/AudioPlayer';
 
 export type Page = 'Home' | 'About' | 'Services' | 'Portfolio' | 'Blog' | 'Contact';
 
@@ -73,13 +75,19 @@ const MainContent: React.FC = () => {
   }, [location]);
 
   useEffect(() => {
-    const path = window.location.pathname.slice(1);
-    const page = path.charAt(0).toUpperCase() + path.slice(1);
+    // Sync active page with current path on mount/change
+    const path = location.pathname.slice(1);
+    const page = path ? path.charAt(0).toUpperCase() + path.slice(1) : 'Home';
+
+    // Simple mapping check or default to Home
     if (['Home', 'About', 'Services', 'Portfolio', 'Blog', 'Contact'].includes(page)) {
       setActivePage(page as Page);
       setCurrentPage(page);
+    } else if (location.pathname === '/' || location.pathname === '') {
+      setActivePage('Home');
+      setCurrentPage('Home');
     }
-  }, []);
+  }, [location.pathname]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -91,7 +99,7 @@ const MainContent: React.FC = () => {
 
     return () => clearTimeout(timer);
   }, []);
-  
+
   const [useSplashCursor, setUseSplashCursor] = useState<boolean>(() => {
     try {
       const val = localStorage.getItem('useSplashCursor');
@@ -111,7 +119,7 @@ const MainContent: React.FC = () => {
 
   const handleNavClick = (page: Page) => {
     if (page === activePage || isTransitioning) return;
-    
+
     setCurrentPage(page);
 
     setIsTransitioning(true);
@@ -124,44 +132,45 @@ const MainContent: React.FC = () => {
   return (
     <>
       {showPreloader && <Preloader isExiting={isPreloaderExiting} />}
-      
+
       <div className={`w-full min-h-screen text-slate-100 cursor-none flex flex-col ${showPreloader ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}>
         {useSplashCursor ? <FluidCursor /> : <LightCursor />}
         <WaterBackground />
         <Navbar activePage={activePage} onNavClick={handleNavClick} useSplashCursor={useSplashCursor} onToggleCursor={() => setUseSplashCursor(v => !v)} />
-        
+
         <main className="relative w-full flex-grow flex flex-col items-center justify-center pt-20">
-            <div className={`w-full h-full transition-all duration-300 ease-in-out ${isTransitioning ? 'opacity-0 translate-y-5' : 'opacity-100 translate-y-0'}`}>
-                 <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/about" element={<AboutPage />} />
-                    <Route path="/services" element={<ServicesPage />} />
-                    <Route path="/portfolio" element={<PortfolioPage />} />
-                    <Route path="/blog" element={<BlogPage />} />
-                    <Route path="/blog/:postId" element={<BlogPostPage />} />
-                    <Route path="/contact" element={<ContactPage />} />
-                    <Route path="*" element={<HomePage />} />
-                 </Routes>
-            </div>
+          <div className={`w-full h-full transition-all duration-300 ease-in-out ${isTransitioning ? 'opacity-0 translate-y-5' : 'opacity-100 translate-y-0'}`}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/portfolio" element={<PortfolioPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:postId" element={<BlogPostPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="*" element={<HomePage />} />
+            </Routes>
+          </div>
         </main>
 
-    <footer className={`w-full max-w-7xl mx-auto px-8 py-4 flex flex-col sm:flex-row justify-between items-center opacity-0 ${!showPreloader ? 'animate-footer-in' : ''} sm:pr-24`}>
-      <p className="text-white text-xs sm:text-sm mb-4 sm:mb-0">
-        &copy; 2024 Senmizu Creatives Ltd. All rights reserved.
-      </p>
-      <div className="flex items-center gap-6 text-white">
-              <a href="https://www.instagram.com/senmizu_ltd/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" data-cursor-interactive className="p-2 rounded-full transform transition-all duration-300 hover:text-brand-primary hover:bg-brand-primary/10 hover:scale-110 hover:-translate-y-1">
-                  <IconInstagram />
-              </a>
-              <a href="https://www.facebook.com/senmizutt/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" data-cursor-interactive className="p-2 rounded-full transform transition-all duration-300 hover:text-brand-primary hover:bg-brand-primary/10 hover:scale-110 hover:-translate-y-1">
-                  <IconFacebook />
-              </a>
-              <a href="https://www.youtube.com/@senmizu892" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to our YouTube channel" data-cursor-interactive className="p-2 rounded-full transform transition-all duration-300 hover:text-brand-primary hover:bg-brand-primary/10 hover:scale-110 hover:-translate-y-1">
-                  <IconYoutube />
-              </a>
+        <footer className={`w-full max-w-7xl mx-auto px-8 py-4 flex flex-col sm:flex-row justify-between items-center opacity-0 ${!showPreloader ? 'animate-footer-in' : ''} sm:pr-24`}>
+          <p className="text-white text-xs sm:text-sm mb-4 sm:mb-0">
+            &copy; 2024 Senmizu Creatives Ltd. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6 text-white">
+            <a href="https://www.instagram.com/senmizu_ltd/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" data-cursor-interactive className="p-2 rounded-full transform transition-all duration-300 hover:text-brand-primary hover:bg-brand-primary/10 hover:scale-110 hover:-translate-y-1">
+              <IconInstagram />
+            </a>
+            <a href="https://www.facebook.com/senmizutt/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" data-cursor-interactive className="p-2 rounded-full transform transition-all duration-300 hover:text-brand-primary hover:bg-brand-primary/10 hover:scale-110 hover:-translate-y-1">
+              <IconFacebook />
+            </a>
+            <a href="https://www.youtube.com/@senmizu892" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to our YouTube channel" data-cursor-interactive className="p-2 rounded-full transform transition-all duration-300 hover:text-brand-primary hover:bg-brand-primary/10 hover:scale-110 hover:-translate-y-1">
+              <IconYoutube />
+            </a>
           </div>
         </footer>
         <ScrollToTopButton />
+        <AudioPlayer />
       </div>
     </>
   );

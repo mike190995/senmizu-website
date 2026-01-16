@@ -503,7 +503,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: 'list',
         content: [
-          '<strong>1. They are Goal-Oriented:</strong> You don\'t just give an agent a prompt; you give it a goal. <br/><em>Chatbot:</em> "What were our sales in Q3?" <br/><em>AI Agent:</em> "Monitor our sales data every day. If any region falls 10% below its target for 48 hours, analyze the performance, identify the three worst-performing products, and email a summary to the regional manager."',
+          '<strong>1. They are Goal-Oriented:</strong> You don\'t just give an agent a prompt; you give it a goal. <br/><em>Chatbot:</em> "What were our sales in Q3?" <br/><em>AI Agent:</em> "Monitor our sales data every day. If any region falls 10% below its target for 48 hours, analyze the performance, identify the three worst-performing products, and email a summary to the regional manager.",',
           '<strong>2. They Can Use Tools:</strong> This is the most critical part. An AI agent can interact with your existing software. It can be given access to your calendar, your email, your CRM, your database, and even other APIs. It can read a file, create a new Google Doc, update a Google Sheet, and send a message on your behalf.',
           '<strong>3. They are Autonomous (With a Human in the Loop):</strong> An agent can run in the background, triggered by events (like a new email) or time (like "every Friday at 5 PM"). It can plan and execute complex, multi-step tasks on its own.'
         ]
