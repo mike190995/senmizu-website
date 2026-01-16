@@ -4,9 +4,9 @@ export const blogPosts: BlogPost[] = [
   {
     id: '1',
     title: "Trinidad's Digital Strategy is Missing One Thing. We're Building It.",
-    featuredImage: '/Blog/Blog post 1/Digital Fluidity Banner (1).jpeg',
-    bannerImage: '/Blog/Blog post 1/Digital Fluidity Banner (1).jpeg',
-    audioSrc: '/Blog/Blog post 1/trinidad_digital_strategy.m4a',
+    featuredImage: '/Blog/post1/Digital Fluidity Banner (1).jpeg',
+    bannerImage: '/Blog/post1/Digital Fluidity Banner (1).jpeg',
+    audioSrc: '/Blog/post1/trinidad_digital_strategy.m4a',
     category: 'Technology',
     date: 'October 24, 2023',
     readTime: '5 min read',
@@ -26,7 +26,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/Blog/Blog post 1/image (5).png',
+        src: '/Blog/post1/image (5).png',
         alt: 'Digital Transformation Gap',
         position: 'full'
       },
@@ -44,7 +44,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/Blog/Blog post 1/image (6).png',
+        src: '/Blog/post1/image (6).png',
         alt: 'Digital Fluidity',
         position: 'full'
       },
@@ -70,7 +70,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/Blog/Blog post 1/Senmizu solution.jpg',
+        src: '/Blog/post1/Senmizu solution.jpg',
         alt: 'Senmizu Solution',
         position: 'full'
       },
@@ -115,9 +115,9 @@ export const blogPosts: BlogPost[] = [
   {
     id: '2',
     title: "5 Signs Your Business Isn't 'Cloud-Native,' It's Just 'Cloud-Hosted'",
-    featuredImage: '/Blog/Blogpost 2/A tech agency focused on AI  Cloud solutions with a water and wave references. They are writing a b.jpeg',
-    bannerImage: '/Blog/Blogpost 2/A tech agency focused on AI  Cloud solutions with a water and wave references. They are writing a b.jpeg',
-    audioSrc: '/Blog/Blogpost 2/2. Custom_Apps_vs.m4a',
+    featuredImage: '/Blog/post2/A tech agency focused on AI  Cloud solutions with a water and wave references. They are writing a b.jpeg',
+    bannerImage: '/Blog/post2/A tech agency focused on AI  Cloud solutions with a water and wave references. They are writing a b.jpeg',
+    audioSrc: '/Blog/post3/3. Monolith_to_Microservices__The_Architectural_Shift_Driving_Limi.m4a',
     category: 'Technology',
     date: 'November 1, 2023',
     readTime: '7 min read',
@@ -133,7 +133,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/Blog/Blogpost 2/Image_fx.png',
+        src: '/Blog/post2/Image_fx.png',
         alt: 'Cloud Hosted vs Cloud Native',
         position: 'full'
       },
@@ -167,7 +167,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/Blog/Blogpost 2/old gears.png',
+        src: '/Blog/post2/old gears.png',
         alt: 'Automation',
         position: 'full'
       },
@@ -209,7 +209,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/Blog/Blogpost 2/Dash kpi.png',
+        src: '/Blog/post2/Dash kpi.png',
         alt: 'Data Dashboard',
         position: 'full'
       },
@@ -264,9 +264,9 @@ export const blogPosts: BlogPost[] = [
   {
     id: '3',
     title: 'The "Off-the-Shelf" Trap: Why Your SaaS Tools Are Costing You More Than Just Money.',
-    featuredImage: '/Blog/Blogpost 3/Blogpost banner - Why Off-the-Shelf Software is Costing Your Caribbean Business More Than You Think..jpeg',
-    bannerImage: '/Blog/Blogpost 3/Blogpost banner - Why Off-the-Shelf Software is Costing Your Caribbean Business More Than You Think..jpeg',
-    audioSrc: '/Blog/Blogpost 3/3. Monolith_to_Microservices__The_Architectural_Shift_Driving_Limi.m4a',
+    featuredImage: '/Blog/post3/Blogpost banner - Why Off-the-Shelf Software is Costing Your Caribbean Business More Than You Think..jpeg',
+    bannerImage: '/Blog/post3/Blogpost banner - Why Off-the-Shelf Software is Costing Your Caribbean Business More Than You Think..jpeg',
+    audioSrc: '/Blog/post2/2. Custom_Apps_vs.m4a',
     category: 'Technology',
     date: 'November 15, 2023',
     readTime: '6 min read',
@@ -298,7 +298,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/Blog/Blogpost 3/Image_fx (5).png',
+        src: '/Blog/post3/Image_fx (5).png',
         alt: 'SaaS Tool Overload',
         position: 'full'
       },
@@ -348,7 +348,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/Blog/Blogpost 3/Image_fx (3).png',
+        src: '/Blog/post3/Image_fx (3).png',
         alt: 'Stuck in the same box',
         position: 'full'
       },
@@ -409,7 +409,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/Blog/Blogpost 3/Image_fx (4).png',
+        src: '/Blog/post3/Image_fx (4).png',
         alt: 'Digital Fluidity',
         position: 'full'
       },
@@ -426,9 +426,9 @@ export const blogPosts: BlogPost[] = [
   {
     id: '4',
     title: "What is an 'AI Agent' (And Why It's Not Just a Fancier Chatbot)",
-    featuredImage: '/Blog/blogpost 4/A tech agency focused on AI  Cloud solutions with_.png',
-    bannerImage: '/Blog/blogpost 4/A tech agency focused on AI  Cloud solutions with_.png',
-    audioSrc: '/Blog/blogpost 4/4. Building_Your_Digital_Workforce__From_Chatbot_Cashier_to_Autono.m4a',
+    featuredImage: '/Blog/post4/A tech agency focused on AI  Cloud solutions with_.png',
+    bannerImage: '/Blog/post4/A tech agency focused on AI  Cloud solutions with_.png',
+    audioSrc: '/Blog/post4/4. Building_Your_Digital_Workforce__From_Chatbot_Cashier_to_Autono.m4a',
     category: 'Technology',
     date: 'November 22, 2023',
     readTime: '6 min read',
@@ -488,7 +488,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/Blog/blogpost 4/agent vs chatbot.png',
+        src: '/Blog/post4/agent vs chatbot.png',
         alt: 'AI Agent vs Chatbot',
         position: 'full'
       },
@@ -546,7 +546,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/Blog/blogpost 4/Image_fx (2).png',
+        src: '/Blog/post4/Image_fx (2).png',
         alt: 'AI Agent Analysis',
         position: 'full'
       },
@@ -568,7 +568,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/Blog/blogpost 4/Image_fx (3).png',
+        src: '/Blog/post4/Image_fx (3).png',
         alt: 'AI Elevation',
         position: 'full'
       },
