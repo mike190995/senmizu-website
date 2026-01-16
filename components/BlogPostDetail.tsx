@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { mockBlogPosts } from '../data/mockBlogPosts';
+import { blogPosts } from '../data/blogData';
 import { ImageContent } from '../types/blog';
 import { useAudio } from '../context/AudioContext';
 import { PlayCircle } from 'lucide-react';
@@ -8,7 +8,7 @@ import { PlayCircle } from 'lucide-react';
 const BlogPostDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { playTrack } = useAudio();
-  const post = mockBlogPosts.find((p) => p.id === id);
+  const post = blogPosts.find((p) => p.id === id);
 
   if (!post) {
     return <div className="text-white text-center py-12">Blog post not found.</div>;

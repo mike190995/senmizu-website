@@ -45,8 +45,8 @@ export const blogPosts: BlogPost[] = [
     {
         id: '4',
         title: "What is an 'AI Agent'?",
-        featuredImage: '/blog/ai-agents/banner.jpg',
-        bannerImage: '/blog/ai-agents/banner.jpg',
+        featuredImage: '/blog/ai-agents/banner.png',
+        bannerImage: '/blog/ai-agents/banner.png',
         audioSrc: '/blog/ai-agents/podcast.m4a',
         category: 'Technology',
         date: 'November 22, 2023',
