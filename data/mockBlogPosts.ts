@@ -428,7 +428,7 @@ export const blogPosts: BlogPost[] = [
     title: "What is an 'AI Agent' (And Why It's Not Just a Fancier Chatbot)",
     featuredImage: '/Blog/post4/A tech agency focused on AI  Cloud solutions with_.png',
     bannerImage: '/Blog/post4/A tech agency focused on AI  Cloud solutions with_.png',
-    audioSrc: '/Blog/post4/post4_audio.m4a',
+    audioSrc: '/Blog/post4/4. Building_Your_Digital_Workforce__From_Chatbot_Cashier_to_Autono.m4a',
     category: 'Technology',
     date: 'November 22, 2023',
     readTime: '6 min read',
