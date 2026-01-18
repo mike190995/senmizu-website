@@ -11,14 +11,14 @@ set IMAGE_TAG=gcr.io/%PROJECT_ID%/%IMAGE_NAME%:latest
 echo "Step 0: Checking for Git changes..."
 git add .
 :: Use a more descriptive commit message
-set commit_msg="Deploy version 0.1.4 - Fix permissions and config"
+set commit_msg="Deploy version 0.1.5 - Test small audio file"
 :: Check if there are changes to commit
 git diff --cached --quiet
 if errorlevel 1 (
     echo "Committing changes..."
     git commit -m %commit_msg%
     echo "Creating git tag..."
-    git tag -a v0.1.4 -m "Release version 0.1.4 - Fix permissions and config"
+    git tag -a v0.1.5 -m "Release version 0.1.5 - Test small audio file"
     echo "Pushing code and tags to repository..."
     git push origin master --tags
 ) else (
