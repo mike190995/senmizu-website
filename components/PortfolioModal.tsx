@@ -31,7 +31,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({ item, onClose }) => {
       );
     }
 
-    return <img src={item.mediaLink} alt={item.title} className="w-full rounded-t-lg shadow-lg max-h-[60vh] object-contain" />;
+    return <img src={item.mediaLink} alt={item.title} loading="lazy" className="w-full rounded-t-lg shadow-lg max-h-[60vh] object-contain" />;
   };
 
   return (

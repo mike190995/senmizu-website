@@ -49,6 +49,7 @@ const BlogPostLayout: React.FC<BlogPostLayoutProps> = ({ post }) => {
             src={bannerImage}
             alt={`Banner for ${title}`}
             className="w-full h-auto object-cover"
+            loading="lazy"
           />
 
           <div className="p-6 sm:p-10">
@@ -91,6 +92,7 @@ const BlogPostLayout: React.FC<BlogPostLayoutProps> = ({ post }) => {
                       src={block.src}
                       alt={block.alt || 'Blog image'}
                       className="w-full h-auto rounded-lg shadow-md my-8"
+                      loading="lazy"
                     />
                   );
                 }

@@ -10,16 +10,20 @@ set IMAGE_TAG=gcr.io/%PROJECT_ID%/%IMAGE_NAME%:latest
 :: 0. Git Operations
 echo "Step 0: Checking for Git changes..."
 git add .
-set commit_msg="Update website"
+:: Use a more descriptive commit message
+set commit_msg="Deploy version 0.1.0"
 :: Check if there are changes to commit
 git diff --cached --quiet
 if errorlevel 1 (
     echo "Committing changes..."
     git commit -m %commit_msg%
-    echo "Pushing code to repository..."
-    git push
+    echo "Creating git tag..."
+    git tag -a v0.1.0 -m "Release version 0.1.0"
+    echo "Pushing code and tags to repository..."
+    git push origin master --tags
 ) else (
-    echo "No changes to commit."
+    echo "No changes to commit. Pushing tags if they don't exist..."
+    git push origin master --tags
 )
 
 if errorlevel 1 (

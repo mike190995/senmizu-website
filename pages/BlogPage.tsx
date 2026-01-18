@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { blogPosts } from '../data/blogData';
+import { blogPosts } from '../data/mockBlogPosts';
 import BlogPost from '../components/BlogPost';
 
 const BlogPage: React.FC = () => {
